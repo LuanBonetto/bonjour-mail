@@ -1,13 +1,9 @@
 name: Enviar Email Diário
 
-# on:
-#   schedule:
-#     # Executa todos os dias às 9:00 da manhã no horário de Brasília (UTC-3)
-#     - cron: '45 2 * * *'
-
 on:
-  push:  # Roda em cada push no repositório
-  workflow_dispatch: 
+  schedule:
+    # Executa todos os dias às 9:00 da manhã no horário de Brasília (UTC-3)
+    - cron: '55 5 * * *'
 
 jobs:
   send_email:
