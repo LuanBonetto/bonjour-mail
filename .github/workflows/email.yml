@@ -23,7 +23,7 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Executar o Script de Envio de Email
-      run: python bonjour-mail.py
+      run: python run-bonjour-mail.py
       env:
         GMAIL_USER: ${{ secrets.GMAIL_USER }}
         GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
