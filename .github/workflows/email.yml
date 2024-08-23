@@ -2,8 +2,8 @@ name: Enviar Email Diário
 
 on:
   schedule:
-    # Executa todos os dias às 9:00 da manhã no horário de Brasília (UTC-3)
-    - cron: 'blablabla'
+    # Executa todos os dias às 7:00 da manhã no horário de Brasília (UTC-3)
+    - cron: ''0 10 * * *''
 
 jobs:
   send_email:
