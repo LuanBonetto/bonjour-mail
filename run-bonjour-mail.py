@@ -27,6 +27,7 @@ def obter_imagem_gato():
 de = gmail_user
 para = gmail_receiver
 assunto = 'Abra para começar bem o seu dia'
+url_imagem = obter_imagem_gato()
 corpo = f'''
 <html>
   <body>
