@@ -3,6 +3,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
+from email.mime.base import MIMEBase
+from email import encoders
 import os
 import requests
 from io import BytesIO
@@ -29,26 +31,17 @@ corpo = (
     'Bom dia princesa!\n'
     'Espero que tenha um ótimo dia 🌹\n'
     'Toma esse gatinho pra alegrar seu dia!\n\n'
+    '<img src="{}" alt="Gato" width="600"/>'.format(obter_imagem_gato())
 )
 
-# Obtendo a URL da imagem de gato
-url_imagem = obter_imagem_gato()
-imagem_resposta = requests.get(url_imagem)
-imagem_bytes = BytesIO(imagem_resposta.content)
-
 # Cria a mensagem MIME
-mensagem = MIMEMultipart()
+mensagem = MIMEMultipart('alternative')
 mensagem['From'] = de
 mensagem['To'] = para
 mensagem['Subject'] = assunto
 
-# Adiciona o corpo do e-mail
-mensagem.attach(MIMEText(corpo, 'plain'))
-
-# Adiciona a imagem de gato como anexo
-imagem = MIMEImage(imagem_bytes.read())
-imagem.add_header('Content-Disposition', 'attachment', filename='gato.jpg')
-mensagem.attach(imagem)
+# Adiciona o corpo do e-mail em formato HTML
+mensagem.attach(MIMEText(corpo, 'html'))
 
 try:
     # Conectando ao servidor SMTP
