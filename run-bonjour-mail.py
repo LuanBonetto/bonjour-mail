@@ -30,7 +30,7 @@ assunto = 'Abra para começar bem o seu dia'
 corpo = f'''
 <html>
   <body>
-    <p>Bom dia, princesa!<br></p>
+    <p>Bom dia, princesa 🌹<br></p>
     <p>Toma esse gatinho pra começar o seu dia bem 🐈❤️<br>
        <img src="{url_imagem}" alt="Gato" width="600"/></p>
   </body>
