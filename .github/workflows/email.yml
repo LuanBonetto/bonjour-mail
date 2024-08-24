@@ -3,7 +3,7 @@ name: Enviar Email Diário
 on:
   schedule:
     # Executa todos os dias às 7:00 da manhã no horário de Brasília (UTC-3)
-    - cron: '0 10 * * *'
+    - cron: "0 10 * * *"
   workflow_dispatch:
 
 jobs:
@@ -11,21 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checar o código
-      uses: actions/checkout@v3
+      - name: Checar o código
+        uses: actions/checkout@v3
 
-    - name: Configurar o Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      - name: Configurar o Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
 
-    - name: Instalar Dependências
-      run: |
-        python -m pip install --upgrade pip
+      - name: Instalar Dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
-    - name: Executar o Script de Envio de Email
-      run: python run-bonjour-mail.py
-      env:
-        GMAIL_USER: ${{ secrets.GMAIL_USER }}
-        GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
-        GMAIL_RECEIVER: ${{ secrets.GMAIL_RECEIVER }}
+      - name: Executar o Script de Envio de Email
+        run: python run-bonjour-mail.py
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_RECEIVER: ${{ secrets.GMAIL_RECEIVER }}
