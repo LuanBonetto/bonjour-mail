@@ -26,13 +26,16 @@ def obter_imagem_gato():
 # Configuração do email
 de = gmail_user
 para = gmail_receiver
-assunto = 'Bom dia - teste'
-corpo = (
-    'Bom dia princesa!\n'
-    'Espero que tenha um ótimo dia 🌹\n'
-    'Toma esse gatinho pra alegrar seu dia!\n\n'
-    '<img src="{}" alt="Gato" width="600"/>'.format(obter_imagem_gato())
-)
+assunto = 'Abra para começar bem o seu dia'
+corpo = f'''
+<html>
+  <body>
+    <p>Bom dia, princesa!<br></p>
+    <p>Toma esse gatinho pra começar o seu dia bem 🐈❤️<br>
+       <img src="{url_imagem}" alt="Gato" width="600"/></p>
+  </body>
+</html>
+'''
 
 # Cria a mensagem MIME
 mensagem = MIMEMultipart('alternative')
